@@ -19,6 +19,90 @@
 
 https://www.themoviedb.org/
 
+## Structure Folder
+
+```
+└── 📁src
+    └── 📁assets
+        └── react.svg
+    └── 📁components
+        └── .DS_Store
+        └── 📁atoms
+            └── 📁Header
+                └── HamburgerToggle.tsx
+                └── Logo.tsx
+                └── SearchBar.tsx
+                └── SideBar.tsx
+            └── 📁MovieCard
+                └── Info.tsx
+                └── Overlay.tsx
+                └── Ratings.tsx
+            └── 📁MovieDetail
+                └── Error.tsx
+                └── Genre.tsx
+                └── Overview.tsx
+                └── Sekeleton.tsx
+            └── 📁MovieList
+                └── Skeleton.tsx
+            └── Pagination.tsx
+            └── 📁Search
+                └── Error.tsx
+                └── Loading.tsx
+                └── NoQuery.tsx
+                └── NoResult.tsx
+                └── Result.tsx
+        └── 📁molecules
+            └── CategoryTabs.tsx
+            └── Footer.tsx
+            └── Header.tsx
+            └── 📁Movie
+                └── 📁Card
+                    └── index.tsx
+                    └── Logo.tsx
+                └── 📁Detail
+                    └── Banner.tsx
+                    └── 📁Information
+                        └── Bio.tsx
+                        └── Companies.tsx
+                        └── Information.tsx
+                └── List.tsx
+        └── 📁organisms
+            └── Home.tsx
+            └── MovieDetails.tsx
+            └── Search.tsx
+    └── 📁composables
+        └── useTmdbFetch.ts
+    └── 📁helper
+        └── image.ts
+    └── 📁pages
+        └── Home.tsx
+        └── MovieDetail.tsx
+        └── Search.tsx
+    └── 📁stores
+        └── movieStore.ts
+    └── 📁test
+        └──  MovieList.test.tsx
+        └── CategoryTab.test.tsx
+        └── Fetching.test.ts
+        └── HelperImage.test.ts
+        └── HomeComponent.test.tsx
+        └── HomePage.test.tsx
+        └── MovieCard.test.tsx
+        └── MovieCardLogo.test.tsx
+        └── MovieStore.test.ts
+        └── Pagination.test.tsx
+    └── 📁types
+        └── movies.ts
+    └── .DS_Store
+    └── App.css
+    └── App.tsx
+    └── index.css
+    └── Link.js
+    └── main.tsx
+    └── sum.js
+    └── vite-env.d.ts
+```
+
 ## Preview
 
 - Home (Web)
