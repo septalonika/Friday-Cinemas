@@ -1,7 +1,7 @@
 import React from "react";
-import { type MovieDetails } from "../../../../../types/movies";
+import { type MovieDetails, type Actors } from "../../../../../types/movies";
 
-const MovieBio: React.FC<{ CurrentMovie: MovieDetails; formatCurrency: (value: number) => string }> = ({ CurrentMovie, formatCurrency }) => {
+const MovieBio: React.FC<{ CurrentMovie: MovieDetails; Actors: Actors[]; formatCurrency: (value: number) => string }> = ({ CurrentMovie, Actors, formatCurrency }) => {
   return (
     <div className="bg-white rounded-lg shadow-lg p-6">
       <h2 className="text-xl font-bold mb-4">Details</h2>
@@ -22,6 +22,27 @@ const MovieBio: React.FC<{ CurrentMovie: MovieDetails; formatCurrency: (value: n
           <span className="text-gray-600">Revenue</span>
           <span className="font-medium">{formatCurrency(CurrentMovie.revenue)}</span>
         </div>
+      </div>
+
+      <h2 className="text-xl font-bold mb-4 mt-4">Starrings</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {Actors.map((actor) => (
+          <div key={actor.id} className="bg-white rounded-lg shadow-lg ">
+            <img
+              src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
+              alt={actor.name}
+              className="w-full h-40 rounded-xl object-cover md:h-48 lg:h-64"
+              loading="lazy"
+              onError={(e) => {
+                e.currentTarget.src = "https://placehold.co/400x400";
+              }}
+            />
+            <div className="flex flex-col items-center justify-center mt-4 p-4">
+              <span className="text-gray-600 flex">{actor.name}</span>
+              <span className="font-medium text-center">{actor.character}</span>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
