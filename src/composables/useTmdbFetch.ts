@@ -17,6 +17,7 @@ export const fetchMovies = async (category: CategoryType, page = 1): Promise<Mov
 
 export const fetchMovieDetails = async (movieId: number): Promise<MovieDetails> => {
   const response = await api.get<MovieDetails>(`/movie/${movieId}`);
+  console.log("Movie Details Response:", response.data);
   return response.data;
 };
 
@@ -24,5 +25,10 @@ export const fetchMovieByKeywords = async (query: string, page = 1): Promise<Mov
   const response = await api.get<MoviesResponse>(`/search/movie`, {
     params: { query, page },
   });
+  return response.data;
+};
+
+export const fetchActors = async (movieId: number): Promise<any> => {
+  const response = await api.get(`/movie/${movieId}/credits`);
   return response.data;
 };
