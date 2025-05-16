@@ -101,6 +101,7 @@ export interface MovieStore {
   error: string | null;
   isHovered: boolean;
   movieDetails: Movie | undefined;
+  actors: Actors[];
 
   fetchMoviesByCategory: (category: CategoryType, page?: number) => Promise<void>;
   fetchMovieById: (movieId: number) => Promise<void>;
@@ -108,6 +109,7 @@ export interface MovieStore {
   setCurrentCategory: (category: CategoryType) => void;
   fetchMovieByKeywords: (query: string, page?: number) => Promise<void>;
   setHover: (hoverState: boolean, movieDetails?: Movie) => void;
+  fetchMovieActors: (movieId: number) => Promise<void>;
 }
 
 export interface MovieDetailBannerProps {
@@ -120,4 +122,20 @@ export interface MovieDetailInformationProps {
   CurrentMovie: MovieDetails;
   formatCurrency: (value: number) => string;
   getImageUrl: (url: string | null) => string;
+  Actors: Actors[];
+}
+
+export interface Actors {
+  adult?: boolean;
+  gender?: number;
+  id?: number;
+  known_for_department?: string;
+  name?: string;
+  original_name?: string;
+  popularity?: number;
+  profile_path?: string;
+  cast_id?: number;
+  character?: string;
+  credit_id?: string;
+  order?: number;
 }
