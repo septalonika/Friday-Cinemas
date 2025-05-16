@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import AxiosMockAdapter from "axios-mock-adapter";
 import { api, fetchMovieByKeywords } from "../composables/useTmdbFetch";
-import { fetchMovies, fetchMovieDetails } from "../composables/useTmdbFetch";
+import { fetchMovies, fetchMovieDetails, fetchActors } from "../composables/useTmdbFetch";
 
 describe("fetchMovieByKeywords", () => {
   let mock: AxiosMockAdapter;
@@ -102,5 +102,52 @@ describe("fetchMovieDetails", () => {
     mock.onGet("/movie/1").reply(500);
 
     await expect(fetchMovieDetails(1)).rejects.toThrow();
+  });
+});
+
+describe("fetchActors", () => {
+  let mock: AxiosMockAdapter;
+
+  beforeEach(() => {
+    mock = new AxiosMockAdapter(api);
+  });
+
+  afterEach(() => {
+    mock.restore();
+  });
+
+  it("fetches actors successfully", async () => {
+    const mockData = {
+      id: 123,
+      cast: [
+        {
+          adult: false,
+          gender: 2,
+          id: 1,
+          known_for_department: "Acting",
+          name: "Actor One",
+          original_name: "Actor One",
+          popularity: 10,
+          profile_path: "/path.jpg",
+          cast_id: 5,
+          character: "Hero",
+          credit_id: "abc123",
+          order: 0,
+        },
+      ],
+      crew: [],
+    };
+
+    mock.onGet(`/movie/123/credits`).reply(200, mockData);
+
+    const data = await fetchActors(123);
+
+    expect(data).toEqual(mockData);
+  });
+
+  it("throws on error response", async () => {
+    mock.onGet(`/movie/123/credits`).reply(500);
+
+    await expect(fetchActors(123)).rejects.toThrow();
   });
 });

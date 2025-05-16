@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">81.81% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>70/70</span>
+                <span class='fraction'>72/88</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">85.71% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>6/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">81.81% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>70/70</span>
+                <span class='fraction'>72/88</span>
             </div>
         
             
@@ -143,11 +143,30 @@
 <a name='L78'></a><a href='#L78'>78</a>
 <a name='L79'></a><a href='#L79'>79</a>
 <a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -197,7 +216,6 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -213,6 +231,24 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -225,7 +261,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { create } from "zustand";
 import type { Movie, MovieStore, CategoryType } from "../types/movies";
-import { fetchMovies, fetchMovieDetails, fetchMovieByKeywords } from "../composables/useTmdbFetch";
+import { fetchMovies, fetchMovieDetails, fetchMovieByKeywords, fetchActors } from "../composables/useTmdbFetch";
 &nbsp;
 export const useMovieStore = create&lt;MovieStore&gt;((set, get) =&gt; ({
   movies: [],
@@ -237,6 +273,7 @@ export const useMovieStore = create&lt;MovieStore&gt;((set, get) =&gt; ({
   error: null,
   isHovered: false,
   movieDetails: undefined,
+  actors: [],
 &nbsp;
   setHover(hoverState: boolean, movieDetails?: Movie) {
     set({ isHovered: hoverState, movieDetails });
@@ -277,7 +314,6 @@ export const useMovieStore = create&lt;MovieStore&gt;((set, get) =&gt; ({
   fetchMovieByKeywords: async (query: string, page = 1) =&gt; {
     set({ isLoading: true, error: null, movies: [], totalPages: 0 });
     try {
-      // Pass page to your fetch function
       const data = await fetchMovieByKeywords(query, page);
 &nbsp;
       set({
@@ -293,6 +329,24 @@ export const useMovieStore = create&lt;MovieStore&gt;((set, get) =&gt; ({
       });
     }
   },
+&nbsp;
+  fetchMovieActors: <span class="fstat-no" title="function not covered" >async (movieId: number) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    set({ isLoading: true, error: null, actors: [] });</span>
+<span class="cstat-no" title="statement not covered" >    try {</span>
+<span class="cstat-no" title="statement not covered" >      const data = await fetchActors(movieId);</span>
+<span class="cstat-no" title="statement not covered" >      set({</span>
+<span class="cstat-no" title="statement not covered" >        movies: data.results,</span>
+<span class="cstat-no" title="statement not covered" >        totalPages: data.total_pages,</span>
+<span class="cstat-no" title="statement not covered" >        actors: data.cast,</span>
+<span class="cstat-no" title="statement not covered" >        isLoading: false,</span>
+<span class="cstat-no" title="statement not covered" >      });</span>
+<span class="cstat-no" title="statement not covered" >    } catch (error) {</span>
+<span class="cstat-no" title="statement not covered" >      set({</span>
+<span class="cstat-no" title="statement not covered" >        error: error instanceof Error ? error.message : "An error occurred",</span>
+<span class="cstat-no" title="statement not covered" >        isLoading: false,</span>
+<span class="cstat-no" title="statement not covered" >      });</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+<span class="cstat-no" title="statement not covered" >  },</span>
 &nbsp;
   setCurrentPage: (page: number) =&gt; {
     const { currentCategory } = get();
@@ -310,7 +364,7 @@ export const useMovieStore = create&lt;MovieStore&gt;((set, get) =&gt; ({
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-16T04:17:47.803Z
+                at 2025-05-16T05:23:05.380Z
             </div>
         <script src="../prettify.js"></script>
         <script>
