@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import type { Movie, MovieStore, CategoryType } from "../types/movies";
-import { fetchMovies, fetchMovieDetails, fetchMovieByKeywords } from "../composables/useTmdbFetch";
+import { fetchMovies, fetchMovieDetails, fetchMovieByKeywords, fetchActors } from "../composables/useTmdbFetch";
 
 export const useMovieStore = create<MovieStore>((set, get) => ({
   movies: [],
@@ -12,6 +12,7 @@ export const useMovieStore = create<MovieStore>((set, get) => ({
   error: null,
   isHovered: false,
   movieDetails: undefined,
+  actors: [],
 
   setHover(hoverState: boolean, movieDetails?: Movie) {
     set({ isHovered: hoverState, movieDetails });
@@ -52,13 +53,30 @@ export const useMovieStore = create<MovieStore>((set, get) => ({
   fetchMovieByKeywords: async (query: string, page = 1) => {
     set({ isLoading: true, error: null, movies: [], totalPages: 0 });
     try {
-      // Pass page to your fetch function
       const data = await fetchMovieByKeywords(query, page);
 
       set({
         movies: data.results,
         totalPages: data.total_pages,
         currentPage: page,
+        isLoading: false,
+      });
+    } catch (error) {
+      set({
+        error: error instanceof Error ? error.message : "An error occurred",
+        isLoading: false,
+      });
+    }
+  },
+
+  fetchMovieActors: async (movieId: number) => {
+    set({ isLoading: true, error: null, actors: [] });
+    try {
+      const data = await fetchActors(movieId);
+      set({
+        movies: data.results,
+        totalPages: data.total_pages,
+        actors: data.cast,
         isLoading: false,
       });
     } catch (error) {
