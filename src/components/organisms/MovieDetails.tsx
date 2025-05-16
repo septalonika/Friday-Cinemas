@@ -6,14 +6,16 @@ import MovieDetailSkeleton from "../atoms/MovieDetail/Sekeleton";
 import MovieDetailError from "../atoms/MovieDetail/Error";
 import MovieDetailBanner from "../molecules/Movie/Detail/Banner";
 import MovieDetailInformation from "../molecules/Movie/Detail/Information/Information";
+import { Link } from "react-router-dom";
 
 const MovieDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const { currentMovie, isLoading, error, fetchMovieById } = useMovieStore();
+  const { currentMovie, actors, isLoading, error, fetchMovieById, fetchMovieActors, fetchMoviesByCategory } = useMovieStore();
 
   useEffect(() => {
     if (id) {
       fetchMovieById(parseInt(id, 10));
+      fetchMovieActors(parseInt(id, 10));
     }
   }, [id, fetchMovieById]);
 
@@ -41,8 +43,15 @@ const MovieDetails: React.FC = () => {
 
   return (
     <div className="w-full">
+      <Link
+        to="/?category=popular"
+        className="absolute top-[14%] right-[10%] z-10 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+        onClick={() => fetchMoviesByCategory("popular", 1)}
+      >
+        Back to Movies
+      </Link>
       <MovieDetailBanner BackdropUrl={backdropUrl} PosterUrl={posterUrl} CurrentMovie={currentMovie} />
-      <MovieDetailInformation CurrentMovie={currentMovie} formatCurrency={formatCurrency} getImageUrl={getImageUrl} />
+      <MovieDetailInformation CurrentMovie={currentMovie} Actors={actors} formatCurrency={formatCurrency} getImageUrl={getImageUrl} />
     </div>
   );
 };
