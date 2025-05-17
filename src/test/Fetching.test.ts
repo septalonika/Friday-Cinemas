@@ -88,7 +88,6 @@ describe("fetchMovieDetails", () => {
       id: 1,
       title: "Movie 1",
       overview: "Overview",
-      // add other fields as needed
     };
 
     mock.onGet("/movie/1").reply(200, mockData);
