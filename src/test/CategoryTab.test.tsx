@@ -1,8 +1,6 @@
-import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import CategoryTabs from "../components/molecules/CategoryTabs";
-import type { CategoryType } from "../../types/movies";
 
 describe("CategoryTabs", () => {
   const categories = [
