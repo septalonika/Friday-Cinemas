@@ -3,6 +3,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import MovieList from "../components/molecules/Movie/List";
 import { MemoryRouter } from "react-router-dom";
+import "@testing-library/jest-dom";
 
 // Mock the movie store module BEFORE importing useMovieStore
 vi.mock("../stores/movieStore", () => ({
@@ -130,7 +131,7 @@ describe("MovieList component", () => {
 
     render(
       <MemoryRouter>
-        <MovieList category="defaultCategory" />
+        <MovieList category="popular" />
       </MemoryRouter>
     );
 
