@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect } from "vitest";
 import MovieCardInfo from "../components/atoms/MovieCard/Info";
 import MovieCardOverlay from "../components/atoms/MovieCard/Overlay";
 import MovieCardRatings from "../components/atoms/MovieCard/Ratings";
@@ -78,8 +78,6 @@ describe("MovieCardRatings", () => {
     expect(screen.getByText("8.0")).toBeInTheDocument();
   });
 });
-
-const mockGetImageUrl = vi.fn((path: string) => `https://image.tmdb.org/t/p/w500${path}`);
 
 describe("MovieCard", () => {
   it("renders and links to the correct movie page", () => {
