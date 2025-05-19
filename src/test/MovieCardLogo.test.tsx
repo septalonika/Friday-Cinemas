@@ -1,4 +1,3 @@
-import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
@@ -6,10 +5,6 @@ vi.mock("../components/atoms/MovieCard/Ratings", () => ({
   __esModule: true,
   default: ({ MovieRatings }: { MovieRatings: number }) => <div data-testid="ratings">{MovieRatings}</div>,
 }));
-// vi.mock("../../../atoms/MovieCard/Ratings", () => ({
-//   __esModule: true,
-//   default: ({ MovieRatings }: { MovieRatings: number }) => <div data-testid="ratings">{MovieRatings}</div>,
-// }));
 
 import MovieCardLogo from "../components/molecules/Movie/Card/Logo";
 
