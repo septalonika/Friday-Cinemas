@@ -24,7 +24,6 @@ vi.mock("../components/molecules/Movie/Card", () => ({
   default: ({ MovieDetails }: { MovieDetails: { title: string } }) => <div>{MovieDetails.title}</div>,
 }));
 
-// Now import the mocked hooks
 import { useMovieStore } from "../stores/movieStore";
 import { useSearchParams } from "react-router-dom";
 
