@@ -5,6 +5,7 @@ import { useMovieStore } from "../../../stores/movieStore";
 import type { MovieListProps } from "../../../types/movies";
 import Pagination from "../../atoms/Pagination";
 import MovieListSkeleton from "../../atoms/MovieList/Skeleton";
+import type { CategoryType } from "../../../types/movies";
 
 const MovieList: React.FC<MovieListProps> = ({ category: propCategory }) => {
   const { movies, isLoading, error, totalPages, fetchMoviesByCategory, setCurrentPage } = useMovieStore();
@@ -15,7 +16,7 @@ const MovieList: React.FC<MovieListProps> = ({ category: propCategory }) => {
   const topRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    fetchMoviesByCategory(category as any, page);
+    fetchMoviesByCategory(category as CategoryType, page);
   }, [category, page, fetchMoviesByCategory]);
 
   useEffect(() => {
