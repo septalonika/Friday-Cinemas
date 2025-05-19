@@ -11,9 +11,20 @@ import MovieCardLogo from "../components/molecules/Movie/Card/Logo";
 describe("MovieCardLogo", () => {
   const mockGetImageUrl = vi.fn();
   const sampleMovieDetails = {
+    id: 1,
     poster_path: "/test-poster.jpg",
+    backdrop_path: "/test-backdrop.jpg",
     title: "Test Movie",
+    overview: "Test overview",
+    release_date: "2023-01-01",
     vote_average: 7.8,
+    genre_ids: [28, 12],
+    original_language: "en",
+    original_title: "Test Movie",
+    popularity: 100,
+    adult: false,
+    video: false,
+    vote_count: 1000,
   };
 
   beforeEach(() => {
