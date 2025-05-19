@@ -1,12 +1,10 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, beforeAll } from "vitest";
 import { getImageUrl } from "../helper/image";
 
-// Mock import.meta.env for the test environment
 beforeAll(() => {
-  // @ts-ignore
-  import.meta.env = {
+  Object.assign(import.meta.env as unknown as Record<string, string>, {
     VITE_IMAGE_BASE_URL: "https://image.tmdb.org/t/p/",
-  };
+  });
 });
 
 describe("getImageUrl", () => {
