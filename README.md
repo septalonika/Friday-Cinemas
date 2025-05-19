@@ -2,6 +2,10 @@
 
 ![alt text](public/favicon/apple-icon-180x180.png)
 
+### Link to demo:
+
+https://fridaycine.cugud.com/
+
 ## 💻 Tech Stack:
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
