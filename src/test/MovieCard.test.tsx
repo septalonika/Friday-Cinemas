@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import MovieCardInfo from "../components/atoms/MovieCard/Info";
 import MovieCardOverlay from "../components/atoms/MovieCard/Overlay";
 import MovieCardRatings from "../components/atoms/MovieCard/Ratings";
@@ -14,12 +14,21 @@ const mockMovieDetails = {
   overview: "A thief who steals corporate secrets through the use of dream-sharing technology.",
   poster_path: "/poster.jpg",
   vote_average: 8.8,
+  backdrop_path: "/backdrop.jpg",
+  vote_count: 10000,
+  genre_ids: [28, 12, 878],
 };
 
 const mockMovieDetailsNoDate = {
+  id: 0,
   title: "Unknown Movie",
   release_date: "",
   overview: "No release date available.",
+  poster_path: "",
+  vote_average: 0,
+  backdrop_path: "",
+  vote_count: 0,
+  genre_ids: [],
 };
 
 describe("MovieCardInfo", () => {
